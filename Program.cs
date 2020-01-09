@@ -32,6 +32,32 @@ namespace LambdaLinq {
                 Console.WriteLine(name);
             }
 
+            Console.WriteLine();
+
+            Console.WriteLine("Digite um valor para filtro: ");
+            double filtro = double.Parse(Console.ReadLine());
+
+            var valores = produtos.Where(p => p.Price < filtro).OrderBy(p => p.Price);
+            Console.WriteLine("Produtos menores que R$ " + filtro);
+            foreach(Produto p in valores) {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine();
+
+
+            Console.WriteLine("Digite um caracter para filtro: ");
+            char ch = char.Parse(Console.ReadLine());
+
+            var carac = produtos.Where(p => p.Name.ElementAt(0) == ch);
+            foreach (Produto p in carac) {
+                Console.WriteLine(p);
+            }
+
+                     
+
+            Console.WriteLine("Soma: " + carac.Select(p => p.Price).Sum());
+
+
         }
     }
 }
